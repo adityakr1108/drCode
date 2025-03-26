@@ -110,11 +110,8 @@ const UserDashboard = () => {
         email: userEmail,
         requestType: formData.requestType,
         message: formData.message,
-        status: 'new',
-        source: 'website',
-        score: 0,
-        interactions: 0
-      });
+        status: 'new'
+      }, false);
       fetchLeads();
       toast.success('Request submitted successfully');
     } catch (error) {

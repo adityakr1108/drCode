@@ -67,27 +67,27 @@ const LeadCard = ({ lead, isAdmin = false, onLeadUpdated }: LeadCardProps) => {
             <span className="text-xs text-gray-500 mb-1">Last Activity</span>
             <span className="text-sm text-gray-700 flex items-center">
               <Clock size={14} className="mr-1 text-gray-500" />
-              {lead.lastActivity || 'No activity'}
+              {lead.lastActivity}
             </span>
           </div>
           
           <div className="flex flex-col">
             <span className="text-xs text-gray-500 mb-1">Request Type</span>
-            <span className="text-sm text-gray-700">{lead.requestType || 'Not specified'}</span>
+            <span className="text-sm text-gray-700">{lead.requestType}</span>
           </div>
           
           <div className="flex flex-col">
             <span className="text-xs text-gray-500 mb-1">Interactions</span>
             <span className="text-sm text-gray-700 flex items-center">
               <MessageSquare size={14} className="mr-1 text-gray-500" />
-              {typeof lead.interactions === 'number' ? lead.interactions : 0}
+              {lead.interactions}
             </span>
           </div>
         </div>
         
         <div className="mt-2">
           <span className="text-xs text-gray-500 mb-1 block">Message</span>
-          <p className="text-sm text-gray-700 line-clamp-2">{lead.message || 'No message'}</p>
+          <p className="text-sm text-gray-700 line-clamp-2">{lead.message}</p>
         </div>
       </CardContent>
       
@@ -95,19 +95,19 @@ const LeadCard = ({ lead, isAdmin = false, onLeadUpdated }: LeadCardProps) => {
         {isAdmin ? (
           <>
             <LeadInteraction 
-              leadId={lead.id || ''} 
+              leadId={lead.id} 
               isAdmin={true} 
               onInteractionComplete={onLeadUpdated} 
             />
             <LeadDetailDialog
-              leadId={lead.id || ''}
+              leadId={lead.id}
               isAdmin={true}
               onLeadUpdated={onLeadUpdated}
             />
           </>
         ) : (
           <LeadDetailDialog
-            leadId={lead.id || ''}
+            leadId={lead.id}
             onLeadUpdated={onLeadUpdated}
           />
         )}

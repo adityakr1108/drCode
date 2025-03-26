@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell as RechartsCell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { leadsService, Lead } from '@/utils/leadsService';
 
@@ -84,7 +84,7 @@ const LeadSourceChart = () => {
               <Tooltip formatter={(value) => [`${value} leads`, 'Count']} />
               <Bar dataKey="count" name="Leads" radius={[0, 4, 4, 0]}>
                 {data.map((entry, index) => (
-                  <RechartsCell key={`cell-${index}`} fill={entry.color} />
+                  <Cell key={`cell-${index}`} fill={entry.color} />
                 ))}
               </Bar>
             </BarChart>

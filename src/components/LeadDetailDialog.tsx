@@ -139,20 +139,20 @@ const LeadDetailDialog = ({ leadId, isAdmin = false, onLeadUpdated, trigger }: L
                 <span className="text-sm text-gray-500 mb-1">Last Activity</span>
                 <span className="text-sm text-gray-700 flex items-center">
                   <Clock size={14} className="mr-2 text-gray-500" />
-                  {lead.lastActivity || 'No activity'}
+                  {lead.lastActivity}
                 </span>
               </div>
               
               <div className="flex flex-col">
                 <span className="text-sm text-gray-500 mb-1">Request Type</span>
-                <span className="text-sm text-gray-700">{lead.requestType || 'Not specified'}</span>
+                <span className="text-sm text-gray-700">{lead.requestType}</span>
               </div>
               
               <div className="flex flex-col">
                 <span className="text-sm text-gray-500 mb-1">Interactions</span>
                 <span className="text-sm text-gray-700 flex items-center">
                   <MessageSquare size={14} className="mr-2 text-gray-500" />
-                  {typeof lead.interactions === 'number' ? lead.interactions : 0}
+                  {lead.interactions}
                 </span>
               </div>
             </div>
@@ -160,7 +160,7 @@ const LeadDetailDialog = ({ leadId, isAdmin = false, onLeadUpdated, trigger }: L
             <div className="mt-6">
               <span className="text-sm text-gray-500 mb-2 block">Message</span>
               <div className="border rounded-lg p-4 bg-gray-50 text-gray-700 whitespace-pre-wrap text-sm">
-                {lead.message || 'No message provided'}
+                {lead.message}
               </div>
             </div>
 
@@ -195,7 +195,7 @@ const LeadDetailDialog = ({ leadId, isAdmin = false, onLeadUpdated, trigger }: L
                 
                 <div className="flex space-x-3 mt-6">
                   <LeadInteraction 
-                    leadId={lead.id || ''}
+                    leadId={lead.id}
                     recipientEmail={lead.email}
                     recipientName={lead.name}
                     isAdmin={true}
@@ -214,7 +214,7 @@ const LeadDetailDialog = ({ leadId, isAdmin = false, onLeadUpdated, trigger }: L
             {!isAdmin && (
               <div className="mt-6">
                 <LeadInteraction 
-                  leadId={lead.id || ''}
+                  leadId={lead.id}
                   onInteractionComplete={() => {
                     fetchLead();
                     onLeadUpdated();
